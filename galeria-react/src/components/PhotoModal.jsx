@@ -1,18 +1,18 @@
 function PhotoModal({id, title, description, imageLarge, alt}) {
 	return (
-		<div class="modal fade" id={`zdjecie${id}`} tabindex="-1" aria-hidden="true">
-			<div class="modal-dialog" style={{"min-width": "80vw", height: "50vh"}}>
-				<div class="modal-content">
-					<div class="modal-header">
-						<h1 class="modal-title fs-5">{title}</h1>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		<div className="modal fade" id={`zdjecie${id}`} tabindex="-1" aria-hidden="true">
+			<div className="modal-dialog" style={{"min-width": "80vw", height: "50vh"}}>
+				<div className="modal-content">
+					<div className="modal-header">
+						<h1 className="modal-title fs-5">{title}</h1>
+						<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<div class="modal-body">
+					<div className="modal-body">
 						{description}
-						<img className="img-fluid" src={imageLarge} alt={alt} />
+						<img classNameName="img-fluid" src={imageLarge} alt={alt} />
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<div className="modal-footer">
+						<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
