@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wizytówka - Antoni Raczyk</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <img  src="avatar.svg"
+         alt="Awatar antoniego raczyka">
+    <div>
+      <h1>Antoni Raczyk</h1>
+      <p>Technik programista - klasa 5</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section id="o-mnie">
+      <h2>O mnie</h2>
+      <p>
+			Uczę się programowania aplikacji webowych, programowania obiektowego i mobilnego. Interesuje się linuxem i FOSS'em
+      </p>
+    </section>
+
+    <section id="umiejetnosci">
+      <h2>Umiejętności</h2>
+      <ul>
+        <li>HTML - struktura semantyczna, formularze</li>
+        <li>CSS - selektory, box model, flexbox</li>
+        <li>JavaScript - DOM, zdarzenia, ES6</li>
+        <li>Git - gałęzie, Pull Request</li>
+        <li>Nvim - Jestem czarodziejem w vimie</li>
+        <li>C++ - Umiem tworzyć klasy, CLI, file IO i interfejsy TUI w ncurses</li>
+        <li>Lua - Mój ulubiony język. Stworzyłej mój własny język programowania w LUA</li>
+      </ul>
+    </section>
+
+    <section id="kontakt">
+      <h2>Kontakt</h2>
+
+      <form id="formularz" novalidate>
+        <div>
+          <label for="imie">Imię i nazwisko</label>
+          <input type="text" id="imie" name="imie">
+        </div>
+
+        <div>
+          <label for="email">Adres e-mail</label>
+          <input type="email" id="email" name="email">
+        </div>
+
+        <div>
+          <label for="temat">Temat</label>
+          <select id="temat" name="temat">
+            <option value="">- wybierz temat -</option>
+            <option value="wspolpraca">Propozycja współpracy</option>
+            <option value="pytanie">Pytanie o projekt</option>
+            <option value="inne">Inne</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="wiadomosc">Wiadomość</label>
+          <textarea id="wiadomosc" name="wiadomosc" rows="5"></textarea>
+        </div>
+
+        <button type="submit">Wyślij wiadomość</button>
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer class="stopka">
+    <p>
+      Antoni Raczyk -
+      <a href="https://github.com/AntRa-cmyk">GitHub</a> ·
+      <a href="mailto:antoniraczyk@example.com">antoniraczyk@example.com</a>
+    </p>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
+
