@@ -1,10 +1,8 @@
-import photos from "../data/photos.json"
 import Fragment from "react"
 import PhotoCard from "./PhotoCard.jsx"
 import PhotoModal from "./PhotoModal.jsx"
 
-function Gallery() {
-	console.log(photos)
+function Gallery({photos, setPhotos}) {
 	return (<div className="container">
 		<div className="row g-4">
 			{photos.map(photo => {
