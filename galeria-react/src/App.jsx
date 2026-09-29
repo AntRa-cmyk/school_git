@@ -31,6 +31,12 @@ function App() {
 		console.log(photos)
 	}
 
+	function togglePhotoFavorite(id) {
+		setPhotos(photos.map((v) => {
+			return v.id != id ? v : {...v, favorite: !v.favorite}
+		}))
+	}
+
 	return (
 		<>
 			<Navbar />
@@ -38,7 +44,7 @@ function App() {
 			<div className="container mt-4">
 				<CategoryBar active={active} setActive={setActive} />
 				<p> Wyświetlono {visiblePhotos.length} z {photos.length} zdjęć </p>
-				<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} />
+				<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} togglePhotoFavorite={togglePhotoFavorite}/>
 			</div>
 			<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
 			<FiltersOffCanvas />
