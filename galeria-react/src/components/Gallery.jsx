@@ -6,7 +6,7 @@ function Gallery({photos, setPhotos}) {
 	return (<div className="container">
 		<div className="row g-4">
 			{photos.map(photo => {
-				return <div className="col-12 col-md-6 col-lg-4" id={photo.id} >
+				return <div className="col-12 col-md-6 col-lg-4" key={photo.id} id={photo.id} >
 					<PhotoCard title={photo.title} alt={photo.alt}
 						image={photo.image} description={photo.description} id={photo.id} category={photo.category} />
 					<PhotoModal title={photo.title} alt={photo.alt}

@@ -8,18 +8,23 @@ import FiltersOffCanvas from "./components/FiltersOffCanvas.jsx"
 import {useState} from "react"
 import Footer from "./components/Footer.jsx"
 import Header from "./components/Header.jsx"
-import photos from "./data/photos.json"
+import photosImport from "./data/photos.json"
 
 function App() {
-	const [zdjecia, setZdjecia] = useState(photos)
+	const [photos, setPhotos] = useState(photosImport)
+	const [active, setActive] = useState("")
+
+	// if(active != "") {
+	// 	setPhotos(photosImport.filter(v => v.category == active))
+	// }
 
 	return (
 		<>
 			<Navbar />
 			<Header />
 			<div className="container mt-4">
-				<CategoryBar />
-				<Gallery photos={zdjecia} setPhotos={setZdjecia} />
+				<CategoryBar active={active} setActive={setActive} />
+				<Gallery photos={photos} setPhotos={setPhotos} />
 			</div>
 			<AddPhotoModal />
 			<FiltersOffCanvas />

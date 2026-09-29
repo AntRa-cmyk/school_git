@@ -9,7 +9,7 @@ function PhotoModal({id, title, description, imageLarge, alt}) {
 					</div>
 					<div className="modal-body">
 						{description}
-						<img classNameName="img-fluid" src={imageLarge} alt={alt} />
+						<img className="img-fluid" src={imageLarge} alt={alt} />
 					</div>
 					<div className="modal-footer">
 						<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
