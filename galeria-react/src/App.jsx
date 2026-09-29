@@ -25,9 +25,10 @@ function App() {
 		}))
 	}
 
-	function OnAddPhotoSubmit(zdjecie) {
+	function onAddPhotoSubmit(zdjecie) {
 		zdjecie.id = Math.max(...photos.map(v => v.id)) + 1
 		setPhotos([...photos, zdjecie])
+		console.log(photos)
 	}
 
 	return (
@@ -38,7 +39,7 @@ function App() {
 				<CategoryBar active={active} setActive={setActive} />
 				<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} />
 			</div>
-			<AddPhotoModal OnAddPhotoSubmit={OnAddPhotoSubmit}/>
+			<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
 			<FiltersOffCanvas />
 		</>
 	)

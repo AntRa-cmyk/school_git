@@ -1,4 +1,19 @@
 function AddPhotoModal({onAddPhotoSubmit}) {
+
+	function onSubmit(e) {
+		e.preventDefault()
+		const titleInput = document.querySelector("#tytul")
+		const categorySelect = document.querySelector("#kategoria")
+		const fileInput = document.querySelector("#plik")
+		const descriptionInput = document.querySelector("#opis")
+		console.log(fileInput)
+		onAddPhotoSubmit({
+			title: titleInput.value,
+			description: descriptionInput.value,
+			category: categorySelect.value
+		})
+	}
+
 	return (
 		<div className="modal fade" id="dodajZdjecie" tabindex="-1" aria-labelledby="dodajZdjecieLabel" aria-hidden="true">
 			<div className="modal-dialog modal-dialog-centered">
@@ -9,22 +24,22 @@ function AddPhotoModal({onAddPhotoSubmit}) {
 					</div>
 
 					<div className="modal-body">
-						<form onSubmit={}>
+						<form>
 							<div className="row g-3">
 
 								<div className="col-md-6">
 									<label htmlFor="tytul" className="form-label">Tytuł</label>
-									<input type="text" className="form-control is-invalid" id="tytul" value="" />
-									<div className="invalid-feedback">Podaj tytuł zdjęcia — to pole jest wymagane.</div>
+									<input type="text" className="form-control" id="tytul"/>
+									<div className="invalid-feedback hidden">Podaj tytuł zdjęcia — to pole jest wymagane.</div>
 								</div>
 
 								<div className="col-md-6">
 									<label htmlFor="kategoria" className="form-label">Kategoria</label>
 									<select className="form-select" id="kategoria">
-										<option selected>Wybierz kategorię…</option>
-										<option>Góry</option>
-										<option>Morze</option>
-										<option>Miasto</option>
+										<option value="" selected>Wybierz kategorię…</option>
+										<option value="gory">Góry</option>
+										<option value="morze">Morze</option>
+										<option value="miasto">Miasto</option>
 									</select>
 								</div>
 
@@ -55,7 +70,7 @@ function AddPhotoModal({onAddPhotoSubmit}) {
 
 					<div className="modal-footer">
 						<button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
-						<button type="submit" className="btn btn-primary">Zapisz</button>
+						<button type="button" className="btn btn-primary" onClick={onSubmit}>Zapisz</button>
 					</div>
 				</div>
 			</div>

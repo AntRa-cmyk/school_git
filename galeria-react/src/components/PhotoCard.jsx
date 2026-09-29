@@ -1,7 +1,7 @@
 function PhotoCard({id, title, description, category, image, alt, onCardDelete}) {
 	return (
 		<div className="card h-100">
-			<img className="card-img-top" src={image} alt={alt} />
+			<img className="card-img-top" src={image} alt={alt ? alt : "Nie znaleziono zdjęcia"} />
 			<div className="card-body">
 				<p className="card-title"> {title} </p>
 				<p className="badge text-bg-primary"> {category} </p>
