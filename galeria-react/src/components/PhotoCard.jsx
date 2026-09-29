@@ -1,4 +1,4 @@
-function PhotoCard({id, title, description, category, image, alt}) {
+function PhotoCard({id, title, description, category, image, alt, onCardDelete}) {
 	return (
 		<div className="card h-100">
 			<img className="card-img-top" src={image} alt={alt} />
@@ -8,6 +8,7 @@ function PhotoCard({id, title, description, category, image, alt}) {
 				<p className="card-text"> {description} </p>
 				<button className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#zdjecie${id}`}> Powiększ </button>
 			</div>
+			<button className="btn btn-primary" onClick={() => onCardDelete(id)}>Usuń</button>
 		</div>
 	)
 }

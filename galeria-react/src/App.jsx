@@ -14,9 +14,21 @@ function App() {
 	const [photos, setPhotos] = useState(photosImport)
 	const [active, setActive] = useState("")
 
-	// if(active != "") {
-	// 	setPhotos(photosImport.filter(v => v.category == active))
-	// }
+	let visiblePhotos = photos
+	if(active != "") {
+		visiblePhotos = photos.filter(v => v.category == active)
+	}
+
+	function onCardDelete(id) {
+		setPhotos(photos.filter((v) => {
+			return v.id != id
+		}))
+	}
+
+	function OnAddPhotoSubmit(zdjecie) {
+		zdjecie.id = Math.max(...photos.map(v => v.id)) + 1
+		setPhotos([...photos, zdjecie])
+	}
 
 	return (
 		<>
@@ -24,9 +36,9 @@ function App() {
 			<Header />
 			<div className="container mt-4">
 				<CategoryBar active={active} setActive={setActive} />
-				<Gallery photos={photos} setPhotos={setPhotos} />
+				<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} />
 			</div>
-			<AddPhotoModal />
+			<AddPhotoModal OnAddPhotoSubmit={OnAddPhotoSubmit}/>
 			<FiltersOffCanvas />
 		</>
 	)

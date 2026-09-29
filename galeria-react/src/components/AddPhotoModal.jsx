@@ -1,4 +1,4 @@
-function AddPhotoModal() {
+function AddPhotoModal({onAddPhotoSubmit}) {
 	return (
 		<div className="modal fade" id="dodajZdjecie" tabindex="-1" aria-labelledby="dodajZdjecieLabel" aria-hidden="true">
 			<div className="modal-dialog modal-dialog-centered">
@@ -9,7 +9,7 @@ function AddPhotoModal() {
 					</div>
 
 					<div className="modal-body">
-						<form>
+						<form onSubmit={}>
 							<div className="row g-3">
 
 								<div className="col-md-6">

@@ -1,16 +1,21 @@
 import CategoryBarButton from "./CategoryBarButton"
 
 function CategoryBar({active, setActive}) {
+	const buttons = [
+		{title: "Wszystkie", value: ""},
+		{title: "Góry", value: "gory"},
+		{title: "Morze", value: "morze"},
+		{title: "Miasto", value: "miasto"},
+	]
 
 	function setActiveTo(new_value) {
 		setActive(new_value)
 	}
 
     return (<div id="kategorie" className="d-flex flex-wrap gap-2 mb-4">
-		<CategoryBarButton active={active} setActive={setActive} buttonText="Wszystkie" filterValue=""/>
-		<CategoryBarButton active={active} setActive={setActive} buttonText="Góry" filterValue="gory"/>
-		<CategoryBarButton active={active} setActive={setActive} buttonText="Morze" filterValue="morze"/>
-		<CategoryBarButton active={active} setActive={setActive} buttonText="Miasto" filterValue="miasto"/>
+		{buttons.map((v) => {
+			return (<CategoryBarButton active={active} setActive={setActive} buttonText={v.title} filterValue={v.value}/>)
+		})}
 	</div>)
 }
 
