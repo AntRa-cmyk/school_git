@@ -14,7 +14,7 @@ function PhotoCard({id, title, description, category, image, alt, isFavorite, on
 				<p className="badge text-bg-primary"> {category} </p>
 				<p className="card-text"> {description} </p>
 				<button className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#zdjecie${id}`}> Powiększ </button>
-				<button className="btn btn-primary m-1" onClick={() => onCardDelete(id)}>Usuń</button>
+				<button className="btn btn-danger m-1" onClick={() => onCardDelete(id)}>Usuń</button>
 				<button className="btn btn-primary m-1" onClick={() => togglePhotoFavorite(id)}>{isFavorite ? filled_star : empty_star}</button>
 			</div>
 		</div>
