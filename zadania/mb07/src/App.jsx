@@ -6,7 +6,7 @@ function App() {
 	let numberInput = useRef(null)
 	const [filter, setFilter] = useState("")
 	const [sortAscending, setSortAscending] = useState(true)
-	const [status, setStatus] = useState(true)
+	const [status, setStatus] = useState()
 
 	const kursy = [
 		"Programowanie obiektowe",
@@ -16,7 +16,7 @@ function App() {
 
 	let visible_list = kursy
 		.map((v, i) => { return{original_idx: i, value: v}})
-		.filter(v => v.value.toLowerCase().startsWith(filter.toLowerCase()))
+		.filter(v => v.value.toLowerCase().includes(filter.toLowerCase()))
 		.sort((a, b) => sortAscending ? b.value.localeCompare(a.value) : a.value.localeCompare(b.value))
 
 	function handleSubmit(e) {
@@ -36,6 +36,16 @@ function App() {
 		setFilter(e.target.value)
 	}
 
+	let alert_class = "d-none"
+
+	if(status != undefined && status.typ == "blad") {
+		alert_class = "alert alert-danger"
+	}
+	else if(status != undefined && status.typ == "sukces") {
+		alert_class = "alert alert-success"
+	}
+
+	console.log(status)
 	return (
 		<div className="container">
 			<label htmlFor="filter_input"> Szukaj kursu </label>
@@ -56,8 +66,7 @@ function App() {
 				<input className="btn btn-primary" type="submit" value="Wyślij" />
 			</form>
 
-			<div className={`alert alert-danger ${ status.typ == "blad" ? "" : "d-none"}`}> {status.tresc} </div>
-			<div className={`alert alert-success ${ status.typ == "sukces" ? "" : "d-none"}`}> {status.tresc} </div>
+			<div className={alert_class}> {status != undefined && status.tresc} </div>
 		</div>
 	)
 }
