@@ -4,6 +4,7 @@ function App() {
 	let nameInput = useRef(null)
 	let numberInput = useRef(null)
 	const [filter, setFilter] = useState("")
+	const [sortAscending, setSortAscending] = useState(true)
 
 	const kursy = [
 		"Programowanie obiektowe",
@@ -11,9 +12,10 @@ function App() {
 		"Programowanie webowe",
 	]
 
-	const visible_list = kursy
+	let visible_list = kursy
 		.map((v, i) => { return{original_idx: i, value: v}})
 		.filter(v => v.value.toLowerCase().startsWith(filter.toLowerCase()))
+		.sort((a, b) => sortAscending ? b.value.localeCompare(a.value) : a.value.localeCompare(b.value))
 
 	function handleSubmit(e) {
 		e.preventDefault()
@@ -34,8 +36,9 @@ function App() {
 	return (
 		<>
 			<p> Liczba kursów: {kursy.length} </p>
-			<label for="filter_input"> Szukaj kursu </label>
+			<label htmlFor="filter_input"> Szukaj kursu </label>
 			<input name="filter_input" onChange={handleFilter}></input>
+			<button onClick={() => setSortAscending(!sortAscending)}>{sortAscending ? "A - Z" : "Z - A"}</button>
 			<ul>
 				{visible_list.map((v) => <li key={v.original_idx}> {v.original_idx + 1}. {v.value} </li>)}
 			</ul>
