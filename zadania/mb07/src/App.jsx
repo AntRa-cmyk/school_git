@@ -21,14 +21,14 @@ function App() {
 
 	function handleSubmit(e) {
 		e.preventDefault()
-		const idx = parseInt(numberInput.current.value)
+		const idx = parseInt(numberInput.current.value) - 1
 		console.log(idx)
 		if(idx >= kursy.length || isNaN(idx)) {
 			setStatus({typ: "blad", tresc: "Nie prawidłowy numer kursu" })
 			return
 		}
 
-		setStatus({typ: "sukces", tresc: "" })
+		setStatus({typ: "sukces", tresc: `${nameInput.current.value} wybrał kurs: "${kursy[idx]}"` })
 		console.log(nameInput.current.value)
 	}
 
@@ -52,7 +52,9 @@ function App() {
 				<input ref={numberInput}></input>
 				<input type="submit"></input>
 			</form>
+
 			<div className={`alert alert-danger ${ status.typ == "blad" ? "" : "d-none"}`}> {status.tresc} </div>
+			<div className={`alert alert-success ${ status.typ == "sukces" ? "" : "d-none"}`}> {status.tresc} </div>
 		</>
 	)
 }
