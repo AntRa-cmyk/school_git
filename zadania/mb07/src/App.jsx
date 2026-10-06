@@ -1,10 +1,12 @@
 import { useRef, useState } from 'react'
+import "bootstrap/dist/css/bootstrap.css"
 
 function App() {
 	let nameInput = useRef(null)
 	let numberInput = useRef(null)
 	const [filter, setFilter] = useState("")
 	const [sortAscending, setSortAscending] = useState(true)
+	const [status, setStatus] = useState(true)
 
 	const kursy = [
 		"Programowanie obiektowe",
@@ -20,13 +22,14 @@ function App() {
 	function handleSubmit(e) {
 		e.preventDefault()
 		const idx = parseInt(numberInput.current.value)
-		console.log(idx, kursy.length)
-		if(idx >= kursy.length) {
-			alert("Nie ma kursu")
+		console.log(idx)
+		if(idx >= kursy.length || isNaN(idx)) {
+			setStatus({typ: "blad", tresc: "Nie prawidłowy numer kursu" })
+			return
 		}
-		else {
-			console.log(nameInput.current.value)
-		}
+
+		setStatus({typ: "sukces", tresc: "" })
+		console.log(nameInput.current.value)
 	}
 
 	function handleFilter(e) {
@@ -35,10 +38,11 @@ function App() {
 
 	return (
 		<>
-			<p> Liczba kursów: {kursy.length} </p>
 			<label htmlFor="filter_input"> Szukaj kursu </label>
 			<input name="filter_input" onChange={handleFilter}></input>
 			<button onClick={() => setSortAscending(!sortAscending)}>{sortAscending ? "A - Z" : "Z - A"}</button>
+
+			<p> Znaleziono {visible_list.length} z {kursy.length} kursów </p>
 			<ul>
 				{visible_list.map((v) => <li key={v.original_idx}> {v.original_idx + 1}. {v.value} </li>)}
 			</ul>
@@ -48,6 +52,7 @@ function App() {
 				<input ref={numberInput}></input>
 				<input type="submit"></input>
 			</form>
+			<div className={`alert alert-danger ${ status.typ == "blad" ? "" : "d-none"}`}> {status.tresc} </div>
 		</>
 	)
 }
