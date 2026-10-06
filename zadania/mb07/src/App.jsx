@@ -28,6 +28,11 @@ function App() {
 			return
 		}
 
+		if(nameInput.current.value.length <= 0) {
+			setStatus({typ: "blad", tresc: "Nie podano imienia i nazwiska" })
+			return
+		}
+
 		setStatus({typ: "sukces", tresc: `${nameInput.current.value} wybrał kurs: "${kursy[idx]}"` })
 		console.log(nameInput.current.value)
 	}
@@ -39,10 +44,10 @@ function App() {
 	let alert_class = "d-none"
 
 	if(status != undefined && status.typ == "blad") {
-		alert_class = "alert alert-danger"
+		alert_class = "alert alert-danger m-2"
 	}
 	else if(status != undefined && status.typ == "sukces") {
-		alert_class = "alert alert-success"
+		alert_class = "alert alert-success m-2"
 	}
 
 	console.log(status)
@@ -63,7 +68,7 @@ function App() {
 				<input className="form-control" ref={nameInput} />
 				<label className="form-label"> Numer kursu </label>
 				<input className="form-control" ref={numberInput} />
-				<input className="btn btn-primary" type="submit" value="Wyślij" />
+				<input className="btn btn-primary m-2" type="submit" value="Wyślij" />
 			</form>
 
 			<div className={alert_class}> {status != undefined && status.tresc} </div>
