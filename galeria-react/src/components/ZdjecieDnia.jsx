@@ -9,6 +9,7 @@ function ZdjecieDnia() {
 	function fetchImage() {
 		if(currentId == undefined) {return}
 
+		setIsLoading(true)
 		fetch(`https://picsum.photos/id/${currentId}/info`)
 			.then(r => r.json())
 			.then(data => {
@@ -30,19 +31,25 @@ function ZdjecieDnia() {
 	useEffect(() => {setCurrentId(getRandomValue())}, [])
 
 	if(isLoading) {
-		return (<div className="spinner-border" role="status">
-			<span className="visually-hidden">Loading…</span>
-		</div>)
+		return (
+			<div className="d-flex flex-center align-items-center justify-content-center">
+				<div className="spinner-border" role="status">
+					<span className="visually-hidden">Loading…</span>
+				</div>
+			</div>
+		)
 	}
 
 	return (<div className="container">
 		{
 			error 
 			? <p> {error} </p>
-			: (<>
+			: (<div className="container d-flex flex-column">
 				<p> Autor: {imageMeta.author} </p>
 				<img src={`https://picsum.photos/id/${currentId}/400/250`} />
-			</>)
+				<button className="btn btn-primary" onClick={() => {setCurrentId(getRandomValue())}}> Losuj nowe zdjęcie </button>
+			</div>)
+
 		}
 	</div>)
 }

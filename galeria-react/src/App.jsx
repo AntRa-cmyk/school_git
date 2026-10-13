@@ -32,9 +32,13 @@ function App() {
 	}, [])
 
 	if(isLoading) {
-		return (<div className="spinner-border" role="status">
-			<span className="visually-hidden">Loading…</span>
-		</div>)
+		return (
+			<div className="d-flex flex-center align-items-center justify-content-center mt-5">
+				<div className="spinner-border" role="status">
+					<span className="visually-hidden">Loading…</span>
+				</div>
+			</div>
+		)
 	}
 
 	let visiblePhotos = photos
