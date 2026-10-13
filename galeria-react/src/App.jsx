@@ -5,14 +5,36 @@ import Navbar from "./components/Navbar.jsx"
 import CategoryBar from "./components/CategoryBar.jsx"
 import AddPhotoModal from "./components/AddPhotoModal.jsx"
 import FiltersOffCanvas from "./components/FiltersOffCanvas.jsx"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Footer from "./components/Footer.jsx"
 import Header from "./components/Header.jsx"
-import photosImport from "./data/photos.json"
+// import photosImport from "./data/photos.json"
 
 function App() {
-	const [photos, setPhotos] = useState(photosImport)
+	const [photos, setPhotos] = useState([])
+	const [error, setError] = useState(null)
+	const [isLoading, setIsLoading] = useState(true)
 	const [active, setActive] = useState("")
+
+
+	useEffect(() => {
+		fetch("/photos.json")
+			.then(r => r.json())
+			.then(data => {
+				setPhotos(data)
+				setIsLoading(false)
+			})
+			.catch(e => {
+				setError("Wystąpił błąd: " + e.message)
+				setIsLoading(false)
+			})
+	}, [])
+
+	if(isLoading) {
+		return (<div class="spinner-border" role="status">
+			<span class="visually-hidden">Loading…</span>
+		</div>)
+	}
 
 	let visiblePhotos = photos
 	if(active != "") {
