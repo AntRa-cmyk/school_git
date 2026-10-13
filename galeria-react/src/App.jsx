@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar.jsx"
 import CategoryBar from "./components/CategoryBar.jsx"
 import AddPhotoModal from "./components/AddPhotoModal.jsx"
 import FiltersOffCanvas from "./components/FiltersOffCanvas.jsx"
+import ZdjecieDnia from "./components/ZdjecieDnia.jsx"
 import {useState, useEffect} from "react"
 import Footer from "./components/Footer.jsx"
 import Header from "./components/Header.jsx"
@@ -31,8 +32,8 @@ function App() {
 	}, [])
 
 	if(isLoading) {
-		return (<div class="spinner-border" role="status">
-			<span class="visually-hidden">Loading…</span>
+		return (<div className="spinner-border" role="status">
+			<span className="visually-hidden">Loading…</span>
 		</div>)
 	}
 
@@ -76,6 +77,7 @@ function App() {
 			</div>
 			<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
 			<FiltersOffCanvas />
+			<ZdjecieDnia />
 		</>
 	)
 }
