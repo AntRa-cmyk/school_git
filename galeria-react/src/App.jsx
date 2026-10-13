@@ -65,8 +65,14 @@ function App() {
 			<Header />
 			<div className="container mt-4">
 				<CategoryBar active={active} setActive={setActive} />
-				<p> Wyświetlono {visiblePhotos.length} z {photos.length} zdjęć </p>
-				<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} togglePhotoFavorite={togglePhotoFavorite}/>
+				{error
+					? (<p> {error} </p>)
+					: (<>
+						<p> Wyświetlono {visiblePhotos.length} z {photos.length} zdjęć </p>
+						<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} togglePhotoFavorite={togglePhotoFavorite}/>
+					</>)
+				}
+				
 			</div>
 			<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
 			<FiltersOffCanvas />
