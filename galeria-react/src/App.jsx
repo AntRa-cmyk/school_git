@@ -7,7 +7,9 @@ import AddPhotoModal from "./components/AddPhotoModal.jsx"
 import FiltersOffCanvas from "./components/FiltersOffCanvas.jsx"
 import ZdjecieDnia from "./components/ZdjecieDnia.jsx"
 import {useState, useEffect} from "react"
+import {Route, Routes} from "react-router-dom"
 import Footer from "./components/Footer.jsx"
+import Layout from "./components/Layout.jsx"
 import Header from "./components/Header.jsx"
 // import photosImport from "./data/photos.json"
 
@@ -16,7 +18,6 @@ function App() {
 	const [error, setError] = useState(null)
 	const [isLoading, setIsLoading] = useState(true)
 	const [active, setActive] = useState("")
-
 
 	useEffect(() => {
 		fetch("/photos.json")
@@ -63,6 +64,17 @@ function App() {
 			return v.id != id ? v : {...v, favorite: !v.favorite}
 		}))
 	}
+
+    return (
+	<Routes>
+		<Route element={<Layout />}>
+			<Route path="/" element={<Header />} />
+			{/* <Route path="/zdjecie/:id"/> */}
+			{/* <Route path="/dodaj"/> */}
+			{/* <Route path="*"/> */}
+			{/* <App /> */}
+		</Route>
+    </Routes>)
 
 	return (
 		<>
