@@ -1,10 +1,10 @@
-import {Link} from "react-router-dom"
+import {Link, NavLink} from "react-router-dom"
 
 function Navbar() {
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom">
 			<div className="container">
-				<Link className="navbar-brand fw-bold" to="/">Galeria Podróży</Link>
+				<NavLink className={({isActive}) => isActive ? "navbar-brand fw-bold" : "navbar-brand" } to="/">Galeria Podróży</NavLink>
 
 				<button className="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#menuGlowne"
