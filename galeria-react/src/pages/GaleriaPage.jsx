@@ -3,7 +3,6 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import Gallery from "../components/Gallery.jsx"
 import Navbar from "../components/Navbar.jsx"
 import CategoryBar from "../components/CategoryBar.jsx"
-import AddPhotoModal from "../components/AddPhotoModal.jsx"
 import FiltersOffCanvas from "../components/FiltersOffCanvas.jsx"
 import ZdjecieDnia from "../components/ZdjecieDnia.jsx"
 import {useState, useEffect} from "react"
@@ -61,7 +60,6 @@ function GaleriaPage() {
 				}
 				
 			</div>
-			<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
 			<FiltersOffCanvas />
 			<ZdjecieDnia />
 		</>
