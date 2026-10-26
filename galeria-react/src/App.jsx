@@ -8,67 +8,69 @@ import FiltersOffCanvas from "./components/FiltersOffCanvas.jsx"
 import ZdjecieDnia from "./components/ZdjecieDnia.jsx"
 import {useState, useEffect} from "react"
 import {Route, Routes} from "react-router-dom"
+import GaleriaPage from "./pages/GaleriaPage.jsx"
 import Footer from "./components/Footer.jsx"
 import Layout from "./components/Layout.jsx"
 import Header from "./components/Header.jsx"
+// import GaleriaPage from "../pages/GaleriaPage.jsx";
 // import photosImport from "./data/photos.json"
 
 function App() {
-	const [photos, setPhotos] = useState([])
-	const [error, setError] = useState(null)
-	const [isLoading, setIsLoading] = useState(true)
-	const [active, setActive] = useState("")
+	// const [photos, setPhotos] = useState([])
+	// const [error, setError] = useState(null)
+	// const [isLoading, setIsLoading] = useState(true)
+	// const [active, setActive] = useState("")
 
-	useEffect(() => {
-		fetch("/photos.json")
-			.then(r => r.json())
-			.then(data => {
-				setPhotos(data)
-				setIsLoading(false)
-			})
-			.catch(e => {
-				setError("Wystąpił błąd: " + e.message)
-				setIsLoading(false)
-			})
-	}, [])
+	// useEffect(() => {
+	// 	fetch("/photos.json")
+	// 		.then(r => r.json())
+	// 		.then(data => {
+	// 			setPhotos(data)
+	// 			setIsLoading(false)
+	// 		})
+	// 		.catch(e => {
+	// 			setError("Wystąpił błąd: " + e.message)
+	// 			setIsLoading(false)
+	// 		})
+	// }, [])
 
-	if(isLoading) {
-		return (
-			<div className="d-flex flex-center align-items-center justify-content-center mt-5">
-				<div className="spinner-border" role="status">
-					<span className="visually-hidden">Loading…</span>
-				</div>
-			</div>
-		)
-	}
+	// if(isLoading) {
+	// 	return (
+	// 		<div className="d-flex flex-center align-items-center justify-content-center mt-5">
+	// 			<div className="spinner-border" role="status">
+	// 				<span className="visually-hidden">Loading…</span>
+	// 			</div>
+	// 		</div>
+	// 	)
+	// }
 
-	let visiblePhotos = photos
-	if(active != "") {
-		visiblePhotos = photos.filter(v => v.category == active)
-	}
+	// let visiblePhotos = photos
+	// if(active != "") {
+	// 	visiblePhotos = photos.filter(v => v.category == active)
+	// }
 
-	function onCardDelete(id) {
-		setPhotos(photos.filter((v) => {
-			return v.id != id
-		}))
-	}
+	// function onCardDelete(id) {
+	// 	setPhotos(photos.filter((v) => {
+	// 		return v.id != id
+	// 	}))
+	// }
 
-	function onAddPhotoSubmit(zdjecie) {
-		zdjecie.id = Math.max(...photos.map(v => v.id)) + 1
-		setPhotos([...photos, zdjecie])
-		console.log(photos)
-	}
+	// function onAddPhotoSubmit(zdjecie) {
+	// 	zdjecie.id = Math.max(...photos.map(v => v.id)) + 1
+	// 	setPhotos([...photos, zdjecie])
+	// 	console.log(photos)
+	// }
 
-	function togglePhotoFavorite(id) {
-		setPhotos(photos.map((v) => {
-			return v.id != id ? v : {...v, favorite: !v.favorite}
-		}))
-	}
+	// function togglePhotoFavorite(id) {
+	// 	setPhotos(photos.map((v) => {
+	// 		return v.id != id ? v : {...v, favorite: !v.favorite}
+	// 	}))
+	// }
 
     return (
 	<Routes>
 		<Route element={<Layout />}>
-			<Route path="/" element={<Header />} />
+			<Route path="/" element={<GaleriaPage />} />
 			{/* <Route path="/zdjecie/:id"/> */}
 			{/* <Route path="/dodaj"/> */}
 			{/* <Route path="*"/> */}
@@ -76,26 +78,26 @@ function App() {
 		</Route>
     </Routes>)
 
-	return (
-		<>
-			<Navbar />
-			<Header />
-			<div className="container mt-4">
-				<CategoryBar active={active} setActive={setActive} />
-				{error
-					? (<p> {error} </p>)
-					: (<>
-						<p> Wyświetlono {visiblePhotos.length} z {photos.length} zdjęć </p>
-						<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} togglePhotoFavorite={togglePhotoFavorite}/>
-					</>)
-				}
+	// return (
+	// 	<>
+	// 		<Navbar />
+	// 		<Header />
+	// 		<div className="container mt-4">
+	// 			<CategoryBar active={active} setActive={setActive} />
+	// 			{error
+	// 				? (<p> {error} </p>)
+	// 				: (<>
+	// 					<p> Wyświetlono {visiblePhotos.length} z {photos.length} zdjęć </p>
+	// 					<Gallery photos={visiblePhotos} onCardDelete={onCardDelete} togglePhotoFavorite={togglePhotoFavorite}/>
+	// 				</>)
+	// 			}
 				
-			</div>
-			<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
-			<FiltersOffCanvas />
-			<ZdjecieDnia />
-		</>
-	)
+	// 		</div>
+	// 		<AddPhotoModal onAddPhotoSubmit={onAddPhotoSubmit}/>
+	// 		<FiltersOffCanvas />
+	// 		<ZdjecieDnia />
+	// 	</>
+	// )
 }
 
 export default App
