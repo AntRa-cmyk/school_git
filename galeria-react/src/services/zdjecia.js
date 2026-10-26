@@ -23,7 +23,8 @@ export function przelaczUlubione(id) {
     return zdjecia
 }
 
-export function dodajZdjecie(zdjecie) {
-    zdjecia = [...zdjecia, v]
+export async function dodajZdjecie(zdjecie) {
+    if(zdjecia == null) {await pobierzZdjecia()}
+    zdjecia = [...zdjecia, zdjecie]
     return zdjecia
 }
