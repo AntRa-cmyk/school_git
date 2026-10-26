@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom"
+
 function Header() {
 	return (
 		<header className="container py-4 py-lg-5">
@@ -17,10 +19,9 @@ function Header() {
 										aria-controls="panelFiltrow">
 							Filtry
 						</button>
-						<button type="button" className="btn btn-primary"
-										data-bs-toggle="modal" data-bs-target="#dodajZdjecie">
+						<Link className="btn btn-primary" to="/dodaj" >
 							Dodaj zdjęcie
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

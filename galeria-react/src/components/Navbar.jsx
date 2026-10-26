@@ -1,9 +1,10 @@
+import {Link} from "react-router-dom"
 
 function Navbar() {
 	return (
 		<nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom">
 			<div className="container">
-				<a className="navbar-brand fw-bold" href="#">Galeria Podróży</a>
+				<Link className="navbar-brand fw-bold" to="/">Galeria Podróży</Link>
 
 				<button className="navbar-toggler" type="button"
 						data-bs-toggle="collapse" data-bs-target="#menuGlowne"
@@ -13,9 +14,9 @@ function Navbar() {
 
 				<div className="collapse navbar-collapse" id="menuGlowne">
 					<ul className="navbar-nav ms-auto">
-						<li className="nav-item"><a className="nav-link active" aria-current="page" href="#galeria">Galeria</a></li>
-						<li className="nav-item"><a className="nav-link" href="#kategorie">Kategorie</a></li>
-						<li className="nav-item"><a className="nav-link" href="#stopka">Kontakt</a></li>
+						<li className="nav-item"><Link to="/" className="nav-link active" aria-current="page">Galeria</Link></li>
+						<li className="nav-item"><Link to="/#kategorie" className="nav-link">Kategorie</Link></li>
+						<li className="nav-item"><Link to="/#stopka" className="nav-link">Kontakt</Link></li>
 					</ul>
 				</div>
 			</div>
