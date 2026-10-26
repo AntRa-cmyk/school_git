@@ -1,31 +1,34 @@
 import {useNavigate, useParams} from "react-router-dom"
+import {useZdjecia} from "../hooks/useZdjecia"
 
 function ZdjeciePage() {
     let navigate = useNavigate()
     let params = useParams()
-    // let id = params.id
-    return (<>
-        <p>Not yet implemented</p>
-    </>)
-	// return (
-	// 	<div className="modal fade" id={`zdjecie${id}`} tabindex="-1" aria-hidden="true">
-	// 		<div className="modal-dialog" style={{"min-width": "80vw", height: "50vh"}}>
-	// 			<div className="modal-content">
-	// 				<div className="modal-header">
-	// 					<h1 className="modal-title fs-5">{title}</h1>
-	// 					<button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	// 				</div>
-	// 				<div className="modal-body">
-	// 					{description}
-	// 					<img className="img-fluid" src={imageLarge} alt={alt} />
-	// 				</div>
-	// 				<div className="modal-footer">
-	// 					<button type="button" className="btn btn-secondary" onClick={() => {navigate(-1)}} >Wstecz</button>
-	// 				</div>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// )
+    let id = params.id
+	const {zdjecia, setZdjecia, isLoading, error} = useZdjecia()
+
+    if(isLoading) {
+        return <p>Ładowanie</p>
+    }
+
+    if(error != null) {
+        return <p>błąd: {error}</p>
+    }
+
+    const {title, description, imageLarge, alt, category} = zdjecia.find((v) => v.id == id)
+
+	return (
+
+		<div className="card h-100">
+			<img className="card-img-top" src={imageLarge} alt={alt ? alt : "Nie znaleziono zdjęcia"} />
+			<div className="card-body">
+				<p className="card-title"> {title} </p>
+				<p className="badge text-bg-primary"> {category} </p>
+				<p className="card-text"> {description} </p>
+			</div>
+            <button type="button" className="btn btn-secondary" onClick={() => {navigate(-1)}} >Wstecz</button>
+		</div>
+	)
 }
 
 export default ZdjeciePage
