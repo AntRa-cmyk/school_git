@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router-dom"
 import GaleriaPage from "./pages/GaleriaPage.jsx"
 import ZdjeciePage from "./pages/ZdjeciePage.jsx"
 import DodajPage from "./pages/DodajPage.jsx"
+import PageNotFound from "./pages/PageNotFound.jsx"
 import Layout from "./components/Layout.jsx"
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
 			<Route path="/" element={<GaleriaPage />} />
 			<Route path="/zdjecie/:id" element={<ZdjeciePage />} />
 			<Route path="/dodaj" element={<DodajPage />}/>
-			{/* <Route path="*"/> */}
+			<Route path="*" element={<PageNotFound />}/>
 		</Route>
     </Routes>)
 }
