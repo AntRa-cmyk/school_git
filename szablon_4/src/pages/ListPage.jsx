@@ -31,7 +31,9 @@ function ListPage({dane}) {
 
     return (<>
         <div className="container">
-            {filter_switches}
+            <div className="d-flex flex-rows">
+                {filter_switches}
+            </div>
             {
                 widoczne.map((wydarzenie) => {
                     return <Card key={wydarzenie.id} wydarzenie={wydarzenie} />
