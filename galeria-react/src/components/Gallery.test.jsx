@@ -35,4 +35,8 @@ describe("Gallery", () => {
 
         expect(screen.getAllByRole('link', {name: "Powiększ"})).toHaveLength(2)
     })
+
+    it("Obsługuje błąd gdy nie może pobrać listy zdjęć", () => {
+
+    })
 })
