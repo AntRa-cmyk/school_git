@@ -36,7 +36,13 @@ describe("Gallery", () => {
         expect(screen.getAllByRole('link', {name: "Powiększ"})).toHaveLength(2)
     })
 
-    it("Obsługuje błąd gdy nie może pobrać listy zdjęć", () => {
+    it("Pusta lista nic nie renderuje", () => {
+        const photos = []
 
+        render(<MemoryRouter>
+            <Gallery photos={photos}/>
+        </MemoryRouter>)
+
+        expect(screen.getByText("Nie ma zdjęć z tym filtrem")).toBeInTheDocument()
     })
 })
