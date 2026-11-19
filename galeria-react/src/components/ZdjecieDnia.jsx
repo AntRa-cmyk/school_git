@@ -56,7 +56,7 @@ function ZdjecieDnia() {
 				</>)
 				}
 				
-				<button className="btn btn-primary" onClick={() => {setCurrentId(getRandomValue())}}> Losuj nowe zdjęcie </button>
+				<button className="btn btn-primary mt-2" onClick={() => {setCurrentId(getRandomValue())}}> Losuj nowe zdjęcie </button>
 			</div>
 		}
 	</div>)

@@ -61,7 +61,9 @@ function GaleriaPage() {
 				
 			</div>
 			<FiltersOffCanvas />
-			<ZdjecieDnia />
+			<div className="mt-4">
+				<ZdjecieDnia />
+			</div>
 		</>
 	)
 }
