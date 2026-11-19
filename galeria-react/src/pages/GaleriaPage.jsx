@@ -30,7 +30,7 @@ function GaleriaPage() {
 
 	let visiblePhotos = zdjecia
 	if(active != "") {
-		visiblePhotos = photos.filter(v => v.category == active)
+		visiblePhotos = zdjecia.filter(v => v.category == active)
 	}
 
 	function onCardDelete(id) {
@@ -38,7 +38,7 @@ function GaleriaPage() {
 	}
 
 	function onAddPhotoSubmit(zdjecie) {
-		zdjecie.id = Math.max(...photos.map(v => v.id)) + 1
+		zdjecie.id = Math.max(...zdjecia.map(v => v.id)) + 1
 		setZdjecia(dodajZdjecie(zdjecie))
 	}
 

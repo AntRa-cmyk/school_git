@@ -1,6 +1,6 @@
 function FiltersOffCanvas() {
 	return (
-		<div className="offcanvas offcanvas-start" tabindex="-1" id="panelFiltrow" aria-labelledby="panelFiltrowLabel">
+		<div className="offcanvas offcanvas-start" tabIndex="-1" id="panelFiltrow" aria-labelledby="panelFiltrowLabel">
 			<div className="offcanvas-header">
 				<h2 className="offcanvas-title h5" id="panelFiltrowLabel">Filtry</h2>
 				<button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Zamknij"></button>
@@ -10,15 +10,15 @@ function FiltersOffCanvas() {
 				<p className="text-body-secondary">Zaznacz kategorie, które chcesz zobaczyć:</p>
 
 				<div className="form-check">
-					<input className="form-check-input" type="checkbox" id="filtrGory" checked />
+					<input className="form-check-input" type="checkbox" id="filtrGory" defaultChecked />
 					<label className="form-check-label" htmlFor="filtrGory">Góry</label>
 				</div>
 				<div className="form-check">
-					<input className="form-check-input" type="checkbox" id="filtrMorze" checked />
+					<input className="form-check-input" type="checkbox" id="filtrMorze" defaultChecked/>
 					<label className="form-check-label" htmlFor="filtrMorze">Morze</label>
 				</div>
 				<div className="form-check">
-					<input className="form-check-input" type="checkbox" id="filtrMiasto" checked />
+					<input className="form-check-input" type="checkbox" id="filtrMiasto" defaultChecked />
 					<label className="form-check-label" htmlFor="filtrMiasto">Miasto</label>
 				</div>
 

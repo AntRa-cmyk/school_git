@@ -13,8 +13,8 @@ function CategoryBar({active, setActive}) {
 	}
 
     return (<div id="kategorie" className="d-flex flex-wrap gap-2 mb-4">
-		{buttons.map((v) => {
-			return (<CategoryBarButton active={active} setActive={setActive} buttonText={v.title} filterValue={v.value}/>)
+		{buttons.map((v, i) => {
+			return (<CategoryBarButton key={i} active={active} setActive={setActive} buttonText={v.title} filterValue={v.value}/>)
 		})}
 	</div>)
 }
