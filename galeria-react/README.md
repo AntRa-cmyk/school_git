@@ -1,16 +1,46 @@
-# React + Vite
+# Galeria
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Strona galeria zaimplementowana w react'cie
 
-Currently, two official plugins are available:
+# Funkcjonalność
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Podgląd listy zdjęć
+- "Uwielbianie" zdjęć
+- Usuwanie zdjęć
+- Filtrowanie po kategori zdjęć
+- Dodawanie zdjęć
+- podgląd na pojedyńcze zdjęcie
+- Obsługa gdy URL jest nieprawidłowy
+- Losowanie losowego zdjęcia
 
-## React Compiler
+# Podstrony
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `/` - Głowna strona galeri
+- `/zdjecia/:id` - Strona szczegółów dla pojedyńczego zdjęcia o danym ID
+- `/dodaj` - Strona z formularzem do dodawania zdjęć
 
-## Expanding the ESLint configuration
+inne URL'e są nieprawidłowe, i przekierują użytkownika do podstrony informującej że "nie odnaleziono podstrony"
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Architektura i konwencja
+
+Kod źródłowy znajduje się w `src/`. I jest zorganizowany na katalogi:
+
+- `src/components` - pojedyńcze komponenty react'a
+- `src/hooks` - funkcje pomocnicze dla react'a
+- `src/services` - funkcje pomocnicze które nie zależą na react'cie
+- `src/pages` - podstrony aplikacji, zaimplementowane z użyciem `react-router-dom` jako komponenty
+
+Wszelka logika powinna być w `src/services` lub `src/hooks`. Komponenty nie powinny implementować nie trivial'nej logiki
+
+`PascalCase` jest używany dla nazw komponentów, podczas gdy `camelCase` jest używanych do innych zmiennych
+
+# Uruchomienie
+
+Najpierw, należy zainstalować wszystkie potrzebne paczki. Uruchom `npm install` w terminalu
+
+Żeby uruchomić aplikacje należy uruchomić `npm run dev` w tym katalogu, oraz wejść na wskazaną stronę. Dokładny URL może się nieco różnić, ale najczęściej to `localhost:5173`
+
+```sh
+npm install
+npm run dev
+```
