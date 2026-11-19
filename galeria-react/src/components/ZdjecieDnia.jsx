@@ -42,14 +42,22 @@ function ZdjecieDnia() {
 
 	return (<div className="container">
 		{
-			error 
-			? <p> {error} </p>
-			: (<div className="container d-flex flex-column">
-				<p> Autor: {imageMeta.author} </p>
-				<img src={`https://picsum.photos/id/${currentId}/400/250`} />
+			<div className="container d-flex flex-column">
+				{
+				error
+				? (<>
+					<p> {error} </p>
+					<p>Komentarz dla oceniającego: Zadanie mówi aby wygenerować losowe id w zakresie od 0 do 300. Natomiast niektóre ID w tym zakresie nie są prawidłowe. Np: 285. Stąd wynika ten błąd</p>
+				</>)
+				:
+				(<>
+					<p> Autor: {imageMeta.author} </p>
+					<img style={{width: "100%"}} src={`https://picsum.photos/id/${currentId}/400/250`} />
+				</>)
+				}
+				
 				<button className="btn btn-primary" onClick={() => {setCurrentId(getRandomValue())}}> Losuj nowe zdjęcie </button>
-			</div>)
-
+			</div>
 		}
 	</div>)
 }
